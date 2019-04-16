@@ -23,6 +23,11 @@ public class Employee {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "employee",fetch = FetchType.LAZY)
     private List<KYCDocument> documentList;
 
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "emp_project_detail",joinColumns = {@JoinColumn(name = "e_id")},inverseJoinColumns = {@JoinColumn(name = "p_id")})
+    private List<Project> projectList;
+
     public Employee() {
     }
 
@@ -69,6 +74,15 @@ public class Employee {
 
     public void setDocumentList(List<KYCDocument> documentList) {
         this.documentList = documentList;
+    }
+
+
+    public List<Project> getProjectList() {
+        return projectList;
+    }
+
+    public void setProjectList(List<Project> projectList) {
+        this.projectList = projectList;
     }
 
     @Override

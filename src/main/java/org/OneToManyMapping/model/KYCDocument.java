@@ -15,7 +15,7 @@ public class KYCDocument {
    private String documentNumber;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name="emp_id",referencedColumnName = "id")
+    @JoinColumn(name="emp_id")
     private Employee employee;
 
     public KYCDocument() {
@@ -57,5 +57,15 @@ public class KYCDocument {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    @Override
+    public String toString() {
+        return "KYCDocument{" +
+                "id=" + id +
+                ", documentName='" + documentName + '\'' +
+                ", documentNumber='" + documentNumber + '\'' +
+                ", employee=" + employee +
+                '}';
     }
 }
